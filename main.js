@@ -56,3 +56,17 @@ function toggleModal(action) {
     lastFocus && lastFocus.focus();
   }
 }
+
+const customButton = document.getElementById("custom-button");
+
+const handleClick = () => {
+  alert("clicked")
+}
+
+const handleKeyPress = (e) => {
+  e = e || window.event;
+  if (e.which === 13) alert("clicked")
+}
+
+customButton.addEventListener("click", handleClick)
+customButton.addEventListener("keypress", handleKeyPress)

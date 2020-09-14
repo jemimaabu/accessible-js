@@ -64,6 +64,8 @@
       position: relative;
       border: 1px solid black;
       transition: background-color .3s, color .3s;
+      display: inline-block;
+      cursor: pointer;
     }
 
     nav a:hover,
@@ -128,12 +130,15 @@
     </section>
     <section id="modal-section">
       <button onclick="toggleModal('show');" class="link">Display modal </button>
-      <div class="page-blur">
-
-      </div>
+      <div class="page-blur"></div>
       <div tabindex="-1" role="dialog" id="modal" class="modal hidden">
         <p>This is a modal</p>
         <button onclick="toggleModal('hide');" class="close-button">Close</button>
+      </div>
+    </section>
+    <section id="custom-content">
+      <div id="custom-button" class="link" tabindex="0" role="button" onclick="handleClick">
+        Click me
       </div>
     </section>
   </main>
