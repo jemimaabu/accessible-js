@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible JS</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    main {
+      height: 100vh;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    main[aria-hidden="true"] .page-blur {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: 0.85;
+      z-index: 0;
+    }
+
+    section {
+      margin: 10px;
+    }
+
+    #content,
+    #timed-content {
+      display: block;
+      width: 350px;
+      padding: 10px;
+      border: 1px solid black;
+      margin-top: 10px;
+    }
+
+    #content.hidden,
+    #timed-content.hidden {
+      display: none;
+    }
+
+    .countdown {
+      color: #960000
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    nav a,
+    .link {
+      padding: 10px;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      position: relative;
+      border: 1px solid black;
+      transition: background-color .3s, color .3s;
+    }
+
+    nav a:hover,
+    nav a:focus,
+    .link:hover,
+    .link:focus {
+      background-color: white;
+      color: black;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    #dropdown-container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+      display: none;
+    }
+
+    .modal {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: max-content;
+      height: max-content;
+      margin: auto;
+      border: 1px solid black;
+      padding: 1em;
+      overflow: auto;
+      background-color: #fff;
+      width: 350px;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section id="hide-content">
+      <button id="toggle-display">Show</button>
+      <div id="content" aria-hidden="true" class="hidden">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, impedit sapiente perferendis itaque ratione
+        animi eveniet fuga et non error culpa nulla eius iure a labore ipsam asperiores nesciunt harum!
+      </div>
+    </section>
+    <section id="timed-content" aria-hidden="false">
+      <button id="stop-timer">Stop timer</button>
+      <p class="countdown">This content will disappear in <span id="timer" role="timer" aria-live="polite">15</span>
+        seconds</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptate nam, in vel iusto beatae sed illo iste,
+        provident expedita aut alias minima recusandae veritatis nihil placeat tempora nisi doloremque.
+      </p>
+    </section>
+    <section id="modal-section">
+      <button onclick="toggleModal('show');" class="link">Display modal </button>
+      <div class="page-blur">
+
+      </div>
+      <div tabindex="-1" role="dialog" id="modal" class="modal hidden">
+        <p>This is a modal</p>
+        <button onclick="toggleModal('hide');" class="close-button">Close</button>
+      </div>
+    </section>
+  </main>
+</body>
+
+<script src="main.js"></script>
+
+</html>
