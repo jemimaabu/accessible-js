@@ -43,7 +43,7 @@ const modal = document.getElementById("modal");
 const mainPage = document.getElementsByTagName("main")[0];
 const lastFocus = document.activeElement;
 
-function toggleModal(action) {
+const toggleModal = (action) => {
   console.log(modal)
   if (action === "show") {
     modal.classList.remove("hidden");
